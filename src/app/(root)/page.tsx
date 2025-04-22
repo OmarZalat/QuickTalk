@@ -1,6 +1,70 @@
-import React from "react";
-import styles from "./page.module.scss";
+"use client";
 
-export default function Home() {
-  return <div className={styles.title}>Hello World!</div>;
-}
+import { useState } from "react";
+
+type ChatMessage = {
+  role: "user" | "assistant";
+  content: string;
+};
+
+const Home = () => {
+  const [prompt, setPrompt] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    setIsLoading(true);
+    setPrompt("");
+
+    setMessages((prevState) => [
+      ...prevState,
+      { role: "user", content: prompt },
+    ]);
+
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ prompt }),
+    });
+
+    const result = await response.json();
+
+    setMessages((prevState) => [
+      ...prevState,
+      { role: "assistant", content: result },
+    ]);
+
+    setIsLoading(false);
+  };
+
+  return (
+    <div>
+      <div>
+        {messages.map((message, index) => (
+          <div key={index}>
+            <strong>{message.role === "user" ? "User: " : "AI: "}</strong>
+            {message.content}
+          </div>
+        ))}
+      </div>
+
+      {isLoading && <p>Loading...</p>}
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
+          placeholder="Type your message"
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
+
+export default Home;
