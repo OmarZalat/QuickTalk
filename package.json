@@ -9,13 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@google/genai": "^0.9.0",
     "@google/generative-ai": "^0.24.0",
     "genai": "^0.0.18",
     "googleapis": "^148.0.0",
     "next": "15.3.1",
     "openai": "^4.95.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -1,13 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 type ChatMessage = {
   role: "user" | "assistant";
   content: string;
 };
 
-const Home = () => {
+import React from "react";
+
+export default function Main() {
   const [prompt, setPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -46,8 +49,8 @@ const Home = () => {
       <div>
         {messages.map((message, index) => (
           <div key={index}>
-            <strong>{message.role === "user" ? "User: " : "AI: "}</strong>
-            {message.content}
+            {message.role === "user" ? "User: " : "AI: "}
+            <ReactMarkdown>{message.content}</ReactMarkdown>
           </div>
         ))}
       </div>
@@ -65,6 +68,4 @@ const Home = () => {
       </form>
     </div>
   );
-};
-
-export default Home;
+}
