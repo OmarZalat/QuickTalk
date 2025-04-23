@@ -8,8 +8,6 @@ type ChatMessage = {
   content: string;
 };
 
-import React from "react";
-
 export default function Main() {
   const [prompt, setPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -18,29 +16,24 @@ export default function Main() {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    setIsLoading(true);
-    setPrompt("");
+    const userMessage: ChatMessage = { role: "user", content: prompt };
+    const updatedMessages = [...messages, userMessage];
 
-    setMessages((prevState) => [
-      ...prevState,
-      { role: "user", content: prompt },
-    ]);
+    setMessages(updatedMessages);
+    setPrompt("");
+    setIsLoading(true);
 
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ prompt }),
+      body: JSON.stringify({ messages: updatedMessages }),
     });
 
     const result = await response.json();
 
-    setMessages((prevState) => [
-      ...prevState,
-      { role: "assistant", content: result },
-    ]);
-
+    setMessages((prev) => [...prev, { role: "assistant", content: result }]);
     setIsLoading(false);
   };
 
