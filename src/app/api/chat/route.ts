@@ -1,24 +1,27 @@
-import { GoogleGenAI } from "@google/genai";
+import OpenAI from "openai";
 
-const ai = new GoogleGenAI({
+const openai = new OpenAI({
   apiKey: process.env.GEMINI_API_KEY!,
+  baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
 });
 
 export async function POST(req: Request) {
   try {
-    const { prompt } = await req.json();
+    const { messages } = await req.json();
 
-    const result = await ai.models.generateContent({
+    const response = await openai.chat.completions.create({
       model: "gemini-2.0-flash",
-      contents: [{ role: "user", parts: [{ text: prompt }] }],
+      messages: [
+        { role: "system", content: "You are a helpful assistant." },
+        ...messages,
+      ],
     });
 
-    const text =
-      result.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
+    const text = response.choices?.[0]?.message?.content || "No response";
 
     return Response.json(text);
   } catch (error) {
-    console.error("Gemini error:", error);
+    console.error("Gemini OpenAI-compatible error:", error);
     return new Response("Internal Server Error", { status: 500 });
   }
 }
