@@ -1,0 +1,6 @@
+@use "../../partial";
+
+.header {
+  padding: 30px;
+  background-color: partial.$primary-color-white;
+}

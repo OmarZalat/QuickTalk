@@ -2,13 +2,15 @@
 
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
+import React from "react";
+import Header from "../components/header/page";
+import styles from "./page.module.scss";
+import { IoSendOutline } from "react-icons/io5";
 
 type ChatMessage = {
   role: "user" | "assistant";
   content: string;
 };
-
-import React from "react";
 
 export default function Main() {
   const [prompt, setPrompt] = useState("");
@@ -45,26 +47,33 @@ export default function Main() {
   };
 
   return (
-    <div>
-      <div>
-        {messages.map((message, index) => (
-          <div key={index}>
-            {message.role === "user" ? "User: " : "AI: "}
-            <ReactMarkdown>{message.content}</ReactMarkdown>
-          </div>
-        ))}
+    <div className={styles.wrapper}>
+      <Header />
+      <div className={styles.conversation}>
+        <div className={styles.messages}>
+          {messages.map((message, index) => (
+            <div key={index}>
+              {message.role === "user" ? "User: " : "AI: "}
+              <ReactMarkdown>{message.content}</ReactMarkdown>
+            </div>
+          ))}
+        </div>
+
+        {isLoading && <p>Loading...</p>}
       </div>
-
-      {isLoading && <p>Loading...</p>}
-
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Type your message"
-        />
-        <button type="submit">Submit</button>
+      <form className={styles.thread} onSubmit={handleSubmit}>
+        <div className={styles.threadWrapper}>
+          <input
+            className={styles.threadInput}
+            value={prompt}
+            type="text"
+            onChange={(e) => setPrompt(e.target.value)}
+            placeholder="Type your message..."
+          />
+          <button type="submit">
+            <IoSendOutline className={styles.submitIcon} />
+          </button>
+        </div>
       </form>
     </div>
   );

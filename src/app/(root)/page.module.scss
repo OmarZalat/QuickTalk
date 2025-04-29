@@ -1,0 +1,62 @@
+@use "../partial";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.conversation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: partial.$primary-color-ghostWhite;
+}
+
+.messages {
+  width: 50%;
+}
+
+.thread {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+
+  .threadWrapper {
+    padding: 20px;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    gap: 10px;
+    border-radius: 10px;
+
+    .threadInput {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid gray;
+    }
+
+    button {
+      background-color: partial.$secondary-color-cloudBurst;
+      border: none;
+      border-radius: 5px;
+
+      .submitIcon {
+        width: 25px;
+        height: 21px;
+        padding: 5px;
+        color: white;
+        align-self: center;
+        transition: 0.3s;
+
+        &:hover {
+          cursor: pointer;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
