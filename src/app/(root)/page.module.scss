@@ -66,3 +66,16 @@
     }
   }
 }
+
+.scrollButton {
+  bottom: 150px !important;
+  right: 30% !important;
+  width: 25px !important;
+  height: 25px !important;
+  background-color: partial.$secondary-color-cloudBurst !important;
+
+  & svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+}

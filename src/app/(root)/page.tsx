@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import ReactMarkdown from "react-markdown";
 import React from "react";
 import Header from "../components/header/page";
 import styles from "./page.module.scss";
 import { IoSendOutline } from "react-icons/io5";
 import Message from "../components/message/page";
+import ScrollToTop from "react-scroll-to-top";
 
 type ChatMessage = {
   role: "user" | "assistant";
@@ -78,6 +78,7 @@ export default function Main() {
           </button>
         </div>
       </form>
+      <ScrollToTop className={styles.scrollButton} smooth color="white" />
     </div>
   );
 }
