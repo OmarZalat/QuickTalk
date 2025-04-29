@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import React from "react";
-import Header from "../components/header/page";
+import Header from "../components/header/header";
 import styles from "./page.module.scss";
 import { IoSendOutline } from "react-icons/io5";
 import ScrollToTop from "react-scroll-to-top";
