@@ -1,0 +1,37 @@
+@use "../../partial";
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  .message {
+    max-width: 60%;
+    padding: 12px 16px;
+    margin: 8px 0;
+    border-radius: 10px;
+    line-height: 1.5;
+    word-break: break-word;
+    white-space: pre-wrap;
+    display: inline-block;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+
+    &.user {
+      background-color: partial.$secondary-color-cloudBurst;
+      align-self: flex-end;
+      margin-left: auto;
+      text-align: right;
+      border-top-right-radius: 0;
+      color: partial.$primary-color-white;
+    }
+
+    &.assistant {
+      background-color: partial.$primary-color-white;
+      align-self: flex-start;
+      margin-right: auto;
+      text-align: left;
+      border-top-left-radius: 0;
+      padding: 40px;
+    }
+  }
+}

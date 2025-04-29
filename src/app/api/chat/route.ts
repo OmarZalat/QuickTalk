@@ -15,7 +15,7 @@ export async function POST(req: Request) {
 
     const text =
       result.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
-
+    console.log(text);
     return Response.json(text);
   } catch (error) {
     console.error("Gemini error:", error);

@@ -6,6 +6,7 @@ import React from "react";
 import Header from "../components/header/page";
 import styles from "./page.module.scss";
 import { IoSendOutline } from "react-icons/io5";
+import Message from "../components/message/page";
 
 type ChatMessage = {
   role: "user" | "assistant";
@@ -44,6 +45,7 @@ export default function Main() {
     ]);
 
     setIsLoading(false);
+    console.log(messages);
   };
 
   return (
@@ -52,10 +54,11 @@ export default function Main() {
       <div className={styles.conversation}>
         <div className={styles.messages}>
           {messages.map((message, index) => (
-            <div key={index}>
-              {message.role === "user" ? "User: " : "AI: "}
-              <ReactMarkdown>{message.content}</ReactMarkdown>
-            </div>
+            <Message
+              key={index}
+              role={message.role}
+              content={message.content}
+            />
           ))}
         </div>
 

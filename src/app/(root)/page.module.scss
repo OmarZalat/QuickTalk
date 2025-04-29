@@ -8,9 +8,8 @@
 .conversation {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background-color: partial.$primary-color-ghostWhite;
+  background-color: partial.$primary-color-lightGray;
 }
 
 .messages {
