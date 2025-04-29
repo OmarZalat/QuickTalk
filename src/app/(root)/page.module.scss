@@ -1,0 +1,81 @@
+@use "../partial";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.conversation {
+  display: flex;
+  flex: 1;
+  overflow-y: auto;
+  flex-direction: column;
+  align-items: center;
+  background-color: partial.$primary-color-lightGray;
+}
+
+.messages {
+  width: 50%;
+}
+
+.thread {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background-color: partial.$primary-color-lightGray;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+
+  .threadWrapper {
+    padding: 20px;
+    width: 48%;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    gap: 10px;
+    border-radius: 10px;
+
+    .threadInput {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid gray;
+    }
+
+    button {
+      background-color: partial.$secondary-color-cloudBurst;
+      border: none;
+      border-radius: 5px;
+
+      .submitIcon {
+        width: 25px;
+        height: 21px;
+        padding: 5px;
+        color: white;
+        align-self: center;
+        transition: 0.3s;
+
+        &:hover {
+          cursor: pointer;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+
+.scrollButton {
+  bottom: 150px !important;
+  right: 30% !important;
+  width: 25px !important;
+  height: 25px !important;
+  background-color: partial.$secondary-color-cloudBurst !important;
+
+  & svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+}
