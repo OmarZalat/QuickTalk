@@ -21,24 +21,29 @@ export default function Main() {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    const userMessage: ChatMessage = { role: "user", content: prompt };
-    const updatedMessages = [...messages, userMessage];
-
-    setMessages(updatedMessages);
-    setPrompt("");
     setIsLoading(true);
+    setPrompt("");
+
+    setMessages((prevState) => [
+      ...prevState,
+      { role: "user", content: prompt },
+    ]);
 
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ messages: updatedMessages }),
+      body: JSON.stringify({ prompt }),
     });
 
     const result = await response.json();
 
-    setMessages((prev) => [...prev, { role: "assistant", content: result }]);
+    setMessages((prevState) => [
+      ...prevState,
+      { role: "assistant", content: result },
+    ]);
+
     setIsLoading(false);
   };
 
