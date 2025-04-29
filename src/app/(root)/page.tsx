@@ -5,8 +5,8 @@ import React from "react";
 import Header from "../components/header/page";
 import styles from "./page.module.scss";
 import { IoSendOutline } from "react-icons/io5";
-import Message from "../components/message/page";
 import ScrollToTop from "react-scroll-to-top";
+import Message from "../components/message/message";
 
 type ChatMessage = {
   role: "user" | "assistant";
