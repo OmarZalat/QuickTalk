@@ -45,7 +45,6 @@ export default function Main() {
     ]);
 
     setIsLoading(false);
-    console.log(messages);
   };
 
   return (
