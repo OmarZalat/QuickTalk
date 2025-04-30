@@ -1,6 +1,6 @@
-# Quick Talk — AI-Powered Chatbot
+# QuickTalk — AI-Powered Chatbot
 
-**Quick Talk** is a lightweight, AI-powered chatbot built with **Next.js (App Router)** and deployed on **Vercel**. It provides a simple conversational interface powered by Google's Gemini 2.0 Flash model, wrapped in a sleek UI with markdown support.
+**QuickTalk** is a lightweight, AI-powered chatbot built with **Next.js (App Router)** and deployed on **Vercel**. It provides a simple conversational interface powered by Google's Gemini 2.0 Flash model, wrapped in a sleek UI with markdown support.
 <br>
 This is an early version of the project, additional features and improvements are actively being planned.
 <br>
