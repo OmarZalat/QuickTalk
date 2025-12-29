@@ -13,7 +13,7 @@
     "@google/generative-ai": "^0.24.0",
     "genai": "^0.0.18",
     "googleapis": "^148.0.0",
-    "next": "15.3.1",
+    "next": "15.3.8",
     "openai": "^4.96.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
